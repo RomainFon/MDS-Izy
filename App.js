@@ -1,21 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import SplashScreen from './screens/splashScreen'
+import RegisterScreen from './screens/registerScreen'
+import ConnectScreen from './screens/connectScreen'
+import NavigationQuest from './navigation/navigation'
+import { Provider } from 'react-redux'
+import Store from './store/configureStore'
+import MainApp from './components/mainApp'
+
+import { StyleSheet, View, Text } from 'react-native'
+
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+        <Provider store={Store}>
+            <MainApp/>
+        </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
