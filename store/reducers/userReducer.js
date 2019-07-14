@@ -9,6 +9,12 @@ function user(state = initialState, action) {
                 pseudo: action.pseudo
             };
             return nextState || state;
+        case 'UPDATE_TEAM':
+            nextState = {
+                ...state,
+                team: action.team
+            };
+            return nextState || state;
         default:
             return state
     }

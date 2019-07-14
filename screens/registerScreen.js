@@ -1,6 +1,7 @@
 import React from 'react'
 import {StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native'
 import LinearGradient from "expo/build/effects/LinearGradient";
+import MainStyle from "../Style"
 
 class RegisterScreen extends React.Component {
 
@@ -13,10 +14,7 @@ class RegisterScreen extends React.Component {
             <View style={styles.main_container}>
                 <LinearGradient colors={['#825FE2', '#322557']} style={styles.main_container}>
                     <View style={styles.form_container}>
-                        <View style={styles.content_form}>
-                            <Text style={styles.text_form}>Prénom</Text>
-                            <TextInput style={styles.input_form}/>
-                        </View>
+
                         <View style={styles.content_form}>
                             <Text style={styles.text_form}>Pseudo</Text>
                             <TextInput style={styles.input_form}/>
@@ -30,9 +28,9 @@ class RegisterScreen extends React.Component {
                             <TextInput style={styles.input_form}/>
                         </View>
                     </View>
-                    <View style={styles.button_container}>
-                        <TouchableOpacity style={styles.button} onPress={() => this.createTeamButton()}>
-                            <Text style={styles.button_text}>Valider</Text>
+                    <View style={MainStyle.button_container}>
+                        <TouchableOpacity style={MainStyle.button} onPress={() => this.createTeamButton()}>
+                            <Text style={MainStyle.button_text}>Valider</Text>
                         </TouchableOpacity>
                     </View>
                 </LinearGradient>
@@ -70,24 +68,5 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         backgroundColor: '#fff',
         flex: 1
-    },
-    button_container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-start'
-    },
-    button:{
-        backgroundColor: '#fff',
-        marginTop:30,
-        paddingTop:10,
-        paddingBottom:10,
-        paddingLeft:20,
-        paddingRight:20,
-        borderRadius:14,
-    },
-    button_text: {
-        color: '#888',
-        fontSize: 20,
-        fontWeight: 'bold'
     }
 });

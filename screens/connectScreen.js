@@ -2,6 +2,7 @@ import React from 'react'
 import {StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native'
 import LinearGradient from "expo/build/effects/LinearGradient";
 import { connect } from 'react-redux'
+import MainStyle from "../Style"
 
 class ConnectScreen extends React.Component {
 
@@ -28,9 +29,9 @@ class ConnectScreen extends React.Component {
                         <TextInput style={styles.input_form}/>
                     </View>
                 </View>
-                <View style={styles.button_container}>
-                    <TouchableOpacity style={styles.button} onPress={() => this._submitFormConnect()}>
-                        <Text style={styles.button_text}>Valider</Text>
+                <View style={MainStyle.button_container}>
+                    <TouchableOpacity style={MainStyle.button} onPress={() => this._submitFormConnect()}>
+                        <Text style={MainStyle.button_text}>Valider</Text>
                     </TouchableOpacity>
                 </View>
                 </LinearGradient>

@@ -3,19 +3,25 @@ import { StyleSheet, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import NavigationQuest from '../navigation/navigation'
 import NavigationConnect from '../navigation/navigationConnect'
+import NavigationTeam from '../navigation/navigationTeam'
 
 class MainApp extends React.Component {
+
+    rendererView(){
+        if(this.props.pseudo === ''){
+            return <NavigationConnect/>
+        }else if(this.props.team === ''){
+            return <NavigationTeam/>
+        }else{
+            return <NavigationQuest/>
+        }
+    }
+
     render() {
         //console.log(this.props);
         return (
             <View style={styles.main_container}>
-                { this.props.pseudo !== '' &&
-                    <NavigationQuest/>
-                }
-                { this.props.pseudo === '' &&
-                    <NavigationConnect/>
-                }
-
+                { this.rendererView() }
             </View>
         )
     }

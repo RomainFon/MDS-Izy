@@ -1,15 +1,16 @@
 import React from 'react'
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
 import LinearGradient from "expo/build/effects/LinearGradient";
+import MainStyle from "../Style"
 
 class SplashScreen extends React.Component {
 
     devenirApprenty(){
-        this.props.navigation.navigate('ConnectScreen');
+        this.props.navigation.navigate('RegisterScreen');
     }
 
     rejoindreIzy(){
-        this.props.navigation.navigate('RegisterScreen');
+        this.props.navigation.navigate('ConnectScreen');
     }
 
     render() {
@@ -22,11 +23,11 @@ class SplashScreen extends React.Component {
                         />
                     </View>
                     <View style={styles.sub_container_button}>
-                        <TouchableOpacity style={styles.button} onPress={() => this.devenirApprenty() }>
-                            <Text style={styles.button_text}>Devenir Apprenty</Text>
+                        <TouchableOpacity style={MainStyle.button} onPress={() => this.devenirApprenty() }>
+                            <Text style={MainStyle.button_text}>Devenir Apprenty</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={() => this.rejoindreIzy()}>
-                            <Text style={styles.button_text}>Rejoindre Izy</Text>
+                        <TouchableOpacity style={MainStyle.button} onPress={() => this.rejoindreIzy()}>
+                            <Text style={MainStyle.button_text}>Rejoindre Izy</Text>
                         </TouchableOpacity>
                     </View>
                 </LinearGradient>
@@ -50,19 +51,5 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start'
-    },
-    button:{
-        backgroundColor: '#fff',
-        marginTop:30,
-        paddingTop:10,
-        paddingBottom:10,
-        paddingLeft:20,
-        paddingRight:20,
-        borderRadius:14,
-    },
-    button_text: {
-        color: '#888',
-        fontSize: 20,
-        fontWeight: 'bold'
     }
 });
