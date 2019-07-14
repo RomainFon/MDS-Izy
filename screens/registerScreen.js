@@ -2,11 +2,23 @@ import React from 'react'
 import {StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native'
 import LinearGradient from "expo/build/effects/LinearGradient";
 import MainStyle from "../Style"
+import { connect } from 'react-redux'
 
 class RegisterScreen extends React.Component {
 
+    constructor(props){
+        super(props);
+    }
+
     createTeamButton(){
-        this.props.navigation.navigate('CreateTeamScreen');
+        //this.props.navigation.navigate('CreateTeamScreen');
+        const action = {
+            type: "CONNECT",
+            email: "test",
+            password: this.password,
+            token: "test"
+        };
+        this.props.dispatch(action);
     }
 
     render() {
@@ -39,7 +51,17 @@ class RegisterScreen extends React.Component {
     }
 }
 
-export default RegisterScreen
+const mapStateToProps = (state) => {
+    return state;
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch: (action) => { dispatch(action) }
+    }
+};
+
+export default connect(mapStateToProps)(RegisterScreen);
 
 const styles = StyleSheet.create({
     main_container: {

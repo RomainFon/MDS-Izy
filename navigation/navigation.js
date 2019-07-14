@@ -8,7 +8,7 @@ const SearchStackNavigator = createStackNavigator({
     Quest: {
         screen: QuestScreen,
         navigationOptions: {
-            title: 'Quest'
+            header: null
         }
     },
     QuestDetailScreen: {

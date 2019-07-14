@@ -4,20 +4,34 @@ export default data = [
         premium: false,
         name: "Chasse au chauves",
         type: "type1",
-        etat: "en cours"
+        etat: 1
     },
     {
         id: 2,
         premium: true,
         name: "L'enigme du champignon",
         type: "type1",
-        etat: "examine"
+        etat: 2
     },
     {
         id: 3,
         premium: false,
         name: "Escargot en folie",
         type: "type2",
-        etat: "approuve"
+        etat: 3
+    },
+    {
+        id: 4,
+        premium: true,
+        name: "L'enigme du champignon",
+        type: "type1",
+        etat: 4
+    },
+    {
+        id: 5,
+        premium: false,
+        name: "Escargot en folie",
+        type: "type2",
+        etat: 3
     },
 ]
