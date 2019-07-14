@@ -2,23 +2,6 @@ import { createStackNavigator, createAppContainer  } from 'react-navigation'
 import SplashScreen from '../screens/splashScreen'
 import ConnectScreen from '../screens/connectScreen'
 import RegisterScreen from '../screens/registerScreen'
-import CreateTeamScreen from '../screens/createTeamScreen'
-
-const RegisterStackNavigator = createStackNavigator({
-    RegisterScreen: {
-        screen: RegisterScreen,
-        navigationOptions: {
-            header: null
-        }
-    },
-    CreateTeamScreen: {
-        screen: CreateTeamScreen,
-        navigationOptions: {
-            header: null
-        }
-    }
-
-});
 
 const ConnectStackNavigator = createStackNavigator({
     SplashScreen: {
@@ -34,7 +17,7 @@ const ConnectStackNavigator = createStackNavigator({
         }
     },
     RegisterScreen: {
-        screen: RegisterStackNavigator,
+        screen: RegisterScreen,
         navigationOptions: {
             header: null
         }
