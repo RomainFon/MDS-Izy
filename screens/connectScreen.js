@@ -1,18 +1,52 @@
 import React from 'react'
-import {StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native'
+import {StyleSheet, Text, View, TextInput, TouchableOpacity, ToastAndroid, ActivityIndicator} from 'react-native'
 import LinearGradient from "expo/build/effects/LinearGradient";
 import { connect } from 'react-redux'
 import MainStyle from "../Style"
+import HttpHelper from "../helpers/HttpHelper";
 
 class ConnectScreen extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.http = new HttpHelper();
+        this.mail = "";
+        this.password = "";
+        this.state = {
+            loading: false
+        }
+    }
+
     _submitFormConnect(){
-        const action = { type: "UPDATE_PSEUDO", pseudo: 'Romain' }
-        this.props.dispatch(action)
+        this.setState({loading: true});
+        this.http.httpRequest("post", "login", {
+            email: this.mail,
+            password: this.password
+        })
+        .then(response => {
+            const action = {
+                type: "CONNECT",
+                email: response.email,
+                password: this.password,
+                token: response.api_token
+            };
+            this.props.dispatch(action);
+        })
+        .catch(error => {
+            ToastAndroid.show(error.status === 400 ? "Mauvais email et/ou mot de passe" : error.data.data, ToastAndroid.LONG);
+            this.setState({loading: false});
+        })
     }
 
     render() {
-        console.log(this.props);
+        let validate;
+        if(this.state.loading){
+            validate = <ActivityIndicator/>
+        } else {
+            validate = <TouchableOpacity style={MainStyle.button} onPress={() => this._submitFormConnect()}>
+                <Text style={MainStyle.button_text}>Valider</Text>
+            </TouchableOpacity>
+        }
         return (
             <View style={styles.main_container}>
                 <LinearGradient colors={['#825FE2', '#322557']} style={styles.main_container}>
@@ -21,18 +55,16 @@ class ConnectScreen extends React.Component {
                 </View>
                 <View style={styles.form_container}>
                     <View style={styles.content_form}>
-                        <Text style={styles.text_form}>Pseudo</Text>
-                        <TextInput style={styles.input_form}/>
+                        <Text style={styles.text_form}>Email</Text>
+                        <TextInput style={styles.input_form} keyboardType={"email-address"} onChangeText={text => this.mail = text}/>
                     </View>
                     <View style={styles.content_form}>
                         <Text style={styles.text_form}>Mot de passe</Text>
-                        <TextInput style={styles.input_form}/>
+                        <TextInput style={styles.input_form} secureTextEntry={true} onChangeText={text => this.password = text}/>
                     </View>
                 </View>
                 <View style={MainStyle.button_container}>
-                    <TouchableOpacity style={MainStyle.button} onPress={() => this._submitFormConnect()}>
-                        <Text style={MainStyle.button_text}>Valider</Text>
-                    </TouchableOpacity>
+                    {validate}
                 </View>
                 </LinearGradient>
             </View>

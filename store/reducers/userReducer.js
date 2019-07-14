@@ -1,12 +1,14 @@
-const initialState = { pseudo: '', team: '', premium: '' };
+const initialState = { email: '', password: '', team: '', premium: '', token: null };
 
 function user(state = initialState, action) {
     let nextState;
     switch (action.type) {
-        case 'UPDATE_PSEUDO':
+        case 'CONNECT':
             nextState = {
                 ...state,
-                pseudo: action.pseudo
+                email: action.email,
+                password: action.password,
+                token: action.token
             };
             return nextState || state;
         case 'UPDATE_TEAM':

@@ -1,75 +1,50 @@
 import axios from "axios";
 
 class Httphelper{
-    httpClient;
 
     constructor(){
-        this.httpClient = axios.create({
-            baseURL: "izy/",
-            headers: {"Content-Type": "application/json"}
-        });
+        //Changer l'url ici avec ngrok
+        this.baseURL= "http://d9e6a88c.ngrok.io/api/";
     }
 
-    httpRequest(method, url, params, handleResponse = this.defaultHandler){
+    httpRequest(method, url, params){
         switch(method){
             case 'get':
-                return this.get(url, params, handleResponse);
+                return this.get(url, params);
             case 'post':
-                return this.post(url, params, handleResponse);
+                return this.post(url, params);
             case 'put':
-                return this.put(url, params, handleResponse);
+                return this.put(url, params);
             case 'delete':
-                return this.delete(url, params, handleResponse);
+                return this.delete(url, params);
             default:
                 throw "invalid method";
         }
     }
 
-    get(url, params, handleResponse){
-        this.httpClient.get(url, {
-            params: params
-        })
-        .then(handleResponse)
-        .catch(error => {
-            console.log(error)
-        });
+    async get(url, params){
+        return await axios.get(this.baseURL + url, params)
+            .then(response => { return response.data })
+            .catch(error =>  { throw error.response});
     }
 
-    post(url, params, handleResponse){
-        this.httpClient.post(url, {
-            params: params
-        })
-        .then(handleResponse)
-        .catch(error => {
-            console.log(error)
-        });
+    async post(url, params){
+        return await axios.post(this.baseURL + url, params)
+            .then(response => { return response.data })
+            .catch(error =>  { throw error.response});
     }
 
-    put(url, params, handleResponse){
-        this.httpClient.post(url, {
-            params: params
-        })
-        .then(handleResponse)
-        .catch(error => {
-            console.log(error)
-        });
+    async put(url, params){
+        return await axios.put(this.baseURL + url, params)
+            .then(response => { return response.data })
+            .catch(error =>  { throw error.response});
     }
 
-    delete(url, params, handleResponse){
-        this.httpClient.post(url, {
-            params: params
-        })
-        .then(handleResponse)
-        .catch(error => {
-            console.log(error)
-        });
-    }
-
-    defaultHandler(response){
-        if(response.status >= 300){
-            throw response.statusText;
-        } else {
-            return response.data;
-        }
+    async delete(url, params){
+        return await axios.delete(this.baseURL + url, params)
+            .then(response => { return response.data })
+            .catch(error =>  { throw error.response});
     }
 }
+
+export default Httphelper;
