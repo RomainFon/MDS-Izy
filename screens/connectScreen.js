@@ -60,7 +60,7 @@ class ConnectScreen extends React.Component {
                     </View>
                     <View style={styles.content_form}>
                         <Text style={styles.text_form}>Mot de passe</Text>
-                        <TextInput style={styles.input_form} secureTextEntry={true} onChangeText={text => this.password = text}/>
+                        <TextInput style={styles.input_form} secureTextEntry={true} autoCapitalize={"none"} onChangeText={text => this.password = text}/>
                     </View>
                 </View>
                 <View style={MainStyle.button_container}>
@@ -73,7 +73,7 @@ class ConnectScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return state
+    return state.user
 };
 
 const mapDispatchToProps = (dispatch) => {

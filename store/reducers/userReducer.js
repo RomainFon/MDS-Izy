@@ -1,6 +1,6 @@
-const initialState = { email: '', password: '', team: '', premium: '', token: null };
+const initialState = { email: null, password: null, team: null, premium: false, token: null };
 
-function user(state = initialState, action) {
+const UserReducer = (state = initialState, action) => {
     let nextState;
     switch (action.type) {
         case 'CONNECT':
@@ -20,5 +20,6 @@ function user(state = initialState, action) {
         default:
             return state
     }
-}
-export default user
+};
+
+export default UserReducer;

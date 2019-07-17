@@ -4,7 +4,7 @@ class Httphelper{
 
     constructor(){
         //Changer l'url ici avec ngrok
-        this.baseURL= "http://d9e6a88c.ngrok.io/api/";
+        this.baseURL= "http://12166beb.ngrok.io/api/";
     }
 
     httpRequest(method, url, params){
