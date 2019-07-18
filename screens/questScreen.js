@@ -8,7 +8,6 @@ import LinearGradient from "expo/build/effects/LinearGradient";
 class QuestScreen extends React.Component {
 
     _displayDetailForQuest = (idQuest) => {
-        console.log("quest with id: "+idQuest);
         this.props.navigation.navigate('QuestDetailScreen', {idQuest: idQuest});
     };
 
