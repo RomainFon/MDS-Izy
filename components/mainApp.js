@@ -8,9 +8,9 @@ import NavigationTeam from '../navigation/navigationTeam'
 class MainApp extends React.Component {
 
     rendererView(){
-        if(this.props.user.email === ""){
+        if(this.props.user.email === null){
             return <NavigationConnect/>
-        }else if(this.props.user.team === ""){
+        }else if(this.props.user.team === null){
             return <NavigationTeam/>
         }else{
             return <NavigationQuest/>

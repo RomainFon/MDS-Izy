@@ -1,8 +1,7 @@
 import React from 'react'
-import {StyleSheet, TouchableOpacity, Text, Image, View} from 'react-native'
+import {StyleSheet, Text, View} from 'react-native'
 
 class HeaderMenu extends React.Component {
-
 
     render() {
         return (
@@ -42,3 +41,4 @@ const styles = StyleSheet.create({
         marginVertical: 10
     }
 });
+

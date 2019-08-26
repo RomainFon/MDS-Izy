@@ -3,11 +3,7 @@ import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 import LinearGradient from "expo/build/effects/LinearGradient";
 import HeaderMenu from "../components/headerMenu";
 
-class ProfilScreen extends React.Component {
-
-    _displayProfilMate = (name) => {
-        this.props.navigation.navigate('ProfilMateScreen');
-    };
+class ProfilRankingScreen extends React.Component {
 
     render() {
         return (
@@ -16,7 +12,6 @@ class ProfilScreen extends React.Component {
                     <HeaderMenu/>
                     <View style={styles.content_container}>
                         <Text style={styles.name_team}>WILDCATS</Text>
-                        <Text style={styles.code_team}>#1234</Text>
                         <View style={styles.img_team_container}>
                             <Image
                                 source={require('../assets/team_logo.png')}
@@ -67,7 +62,7 @@ class ProfilScreen extends React.Component {
     }
 }
 
-export default ProfilScreen
+export default ProfilRankingScreen
 
 const styles = StyleSheet.create({
     main_container: {
@@ -81,11 +76,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 28,
         fontWeight: 'bold'
-    },
-    code_team:{
-        textAlign: 'center',
-        color: '#fff',
-        fontSize: 16
     },
     img_team_container: {
         alignItems: 'center',

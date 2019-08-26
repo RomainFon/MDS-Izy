@@ -1,10 +1,36 @@
 import { createStackNavigator, createAppContainer, createBottomTabNavigator   } from 'react-navigation'
 import QuestScreen from '../screens/questScreen'
 import QuestDetailScreen from '../screens/questDetailScreen'
+import QuestSpeedyScreen from '../screens/questSpeedyScreen'
+import QuestDreamyScreen from '../screens/questDreamyScreen'
 import RankingScreen from '../screens/rankingScreen'
+import RankingPremiumScreen from '../screens/rankingPremiumScreen'
 import ProfilScreen from '../screens/profilScreen'
+import ProfilMateScreen from '../screens/profilMateScreen'
+import ProfilRankingScreen from '../screens/profilRankingScreen'
 import { StyleSheet, Image } from 'react-native';
 import React from 'react'
+
+const QuestStackNavigator = createStackNavigator({
+    QuestDetailScreen: {
+        screen: QuestDetailScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
+    QuestSpeedyScreen: {
+        screen: QuestSpeedyScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
+    QuestDreamyScreen: {
+        screen: QuestDreamyScreen,
+        navigationOptions: {
+            header: null
+        }
+    }
+});
 
 const SearchStackNavigator = createStackNavigator({
     Quest: {
@@ -14,7 +40,43 @@ const SearchStackNavigator = createStackNavigator({
         }
     },
     QuestDetailScreen: {
-        screen: QuestDetailScreen,
+        screen: QuestStackNavigator,
+        navigationOptions: {
+            header: null
+        }
+    }
+});
+
+const ProfilStackNavigator = createStackNavigator({
+    Profil: {
+        screen: ProfilScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
+    ProfilMateScreen: {
+        screen: ProfilMateScreen,
+        navigationOptions: {
+            header: null
+        }
+    }
+});
+
+const RankingStackNavigator = createStackNavigator({
+    Ranking: {
+        screen: RankingScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
+    ProfilRankingScreen: {
+        screen: ProfilRankingScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
+    RankingPremiumScreen:{
+        screen: RankingPremiumScreen,
         navigationOptions: {
             header: null
         }
@@ -34,7 +96,7 @@ const IzyTabNavigator = createBottomTabNavigator({
         }
     },
     Profil: {
-        screen: ProfilScreen,
+        screen: ProfilStackNavigator,
         navigationOptions: {
             tabBarIcon: () => {
                 return <Image
@@ -45,7 +107,7 @@ const IzyTabNavigator = createBottomTabNavigator({
         }
     },
     Ranking: {
-        screen: RankingScreen,
+        screen: RankingStackNavigator,
         navigationOptions: {
             tabBarIcon: () => {
                 return <Image

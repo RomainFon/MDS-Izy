@@ -19,7 +19,15 @@ class ConnectScreen extends React.Component {
 
     _submitFormConnect(){
         this.setState({loading: true});
-        this.http.httpRequest("post", "login", {
+        const action = {
+            type: "CONNECT",
+            email: 'email',
+            password: this.password,
+            token: 'token'
+        };
+        this.props.dispatch(action);
+
+        /*this.http.httpRequest("post", "login", {
             email: this.mail,
             password: this.password
         })
@@ -35,7 +43,7 @@ class ConnectScreen extends React.Component {
         .catch(error => {
             ToastAndroid.show(error.status === 400 ? "Mauvais email et/ou mot de passe" : error.data.data, ToastAndroid.LONG);
             this.setState({loading: false});
-        })
+        })*/
     }
 
     render() {
@@ -55,7 +63,7 @@ class ConnectScreen extends React.Component {
                 </View>
                 <View style={styles.form_container}>
                     <View style={styles.content_form}>
-                        <Text style={styles.text_form}>Email</Text>
+                        <Text style={styles.text_form}>Email/Pseudo</Text>
                         <TextInput style={styles.input_form} keyboardType={"email-address"} onChangeText={text => this.mail = text}/>
                     </View>
                     <View style={styles.content_form}>

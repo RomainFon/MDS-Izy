@@ -1,21 +1,17 @@
 import React from 'react'
-import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, FlatList } from 'react-native';
 import LinearGradient from "expo/build/effects/LinearGradient";
 import HeaderMenu from "../components/headerMenu";
-import dataRanking from '../helpers/rankingData'
+import dataRanking from '../helpers/rankingPremiumData'
 import RankingItem from '../components/rankingItem'
-import MainStyle from "../Style";
 
 
-class RankingScreen extends React.Component {
+class RankingPremiumScreen extends React.Component {
 
     _displayDetailForQuest = (idTeam) => {
-        this.props.navigation.navigate('ProfilRankingScreen', {idTeam: idTeam});
+
     };
 
-    _displayDetailForPremium = () => {
-        this.props.navigation.navigate('RankingPremiumScreen');
-    };
 
     render() {
         return (
@@ -23,28 +19,21 @@ class RankingScreen extends React.Component {
                 <LinearGradient colors={['#ca8d21', '#f452b7']} style={styles.main_container}>
                     <HeaderMenu/>
                     <View style={styles.content_container}>
-                        <Text style={styles.name_ranking}>Classement Ynitié</Text>
+                        <Text style={styles.name_ranking}>Classement Premyum</Text>
                     </View>
-                    <View style={styles.flatlist_container}>
                         <FlatList
                             style={styles.flatlist_content}
                             data={dataRanking}
                             keyExtractor={(item) => item.id.toString()}
                             renderItem={({item}) => <RankingItem team={item} displayDetailForQuest={this._displayDetailForQuest}/>}
                         />
-                    </View>
-                    <View style={MainStyle.button_container}>
-                        <TouchableOpacity style={MainStyle.button} onPress={this._displayDetailForPremium}>
-                            <Text style={MainStyle.button_text}>Classement Premyum</Text>
-                        </TouchableOpacity>
-                    </View>
                 </LinearGradient>
             </View>
         )
     }
 }
 
-export default RankingScreen
+export default RankingPremiumScreen
 
 const styles = StyleSheet.create({
     main_container: {
